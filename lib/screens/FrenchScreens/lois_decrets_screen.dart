@@ -167,7 +167,7 @@ class _LoisDirectsScreenState extends State<LoisDirectsScreen> {
                                   text: 'Lois',
                                 ),
                                 Tab(
-                                  text: 'Directs',
+                                  text: 'Decrets',
                                 ),
                               ],
                             ),
