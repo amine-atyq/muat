@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:muat/screens/FrenchScreens/lois_directs_screen.dart';
+import 'package:muat/screens/FrenchScreens/lois_decrets_screen.dart';
 import 'package:muat/screens/FrenchScreens/recherche_screen.dart';
 
 import 'package:muat/widgets/FrenchScreenWidgets/french_footer.dart';

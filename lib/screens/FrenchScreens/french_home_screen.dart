@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:muat/screens/FrenchScreens/Home/AcceuilScreen.dart';
 import 'package:muat/screens/FrenchScreens/Home/ContactScreen.dart';
 import 'package:muat/screens/FrenchScreens/arretes_circulaires.dart';
-import 'package:muat/screens/FrenchScreens/lois_directs_screen.dart';
+import 'package:muat/screens/FrenchScreens/lois_decrets_screen.dart';
 import 'package:muat/screens/FrenchScreens/recherche_screen.dart';
 import 'package:muat/screens/home_screen.dart';
 
