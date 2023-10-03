@@ -177,14 +177,14 @@ class _LoisDirectsScreenState extends State<LoisDirectsScreen> {
                 ),
                 body: TabBarView(
                   children: [
-                    activePageTitle == 'Lois et Directs'
+                    activePageTitle == 'Lois et Decrets'
                         ? CategoryScreen(
                             category: 'Lois',
                             categories: lois.reversed.toList())
                         : const ContactScreen(),
-                    activePageTitle == 'Lois et Directs'
+                    activePageTitle == 'Lois et Decrets'
                         ? CategoryScreen(
-                            category: 'Directs',
+                            category: 'Decret',
                             categories: directs.reversed.toList())
                         : const ContactScreen(),
                   ],
