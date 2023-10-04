@@ -50,7 +50,7 @@ class _DocumnetsScreenState extends State<DocumnetsScreen> {
 
   Future<List<Map<String, String>>> fetchDocuments() async {
     final url =
-        Uri.https('muat-2ab99-default-rtdb.firebaseio.com', 'نصوص.json');
+        Uri.https('muat-2ab99-default-rtdb.firebaseio.com', 'documents.json');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {

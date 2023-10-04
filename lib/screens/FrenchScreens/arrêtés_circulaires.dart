@@ -6,21 +6,22 @@ import 'package:muat/screens/FrenchScreens/Home/ContactScreen.dart';
 import 'package:muat/screens/FrenchScreens/categoryScreen.dart';
 import 'package:http/http.dart' as http;
 
-class LoisDirectsScreen extends StatefulWidget {
+class ArretesCirculairesScreen extends StatefulWidget {
   final String title;
-  const LoisDirectsScreen({
+  const ArretesCirculairesScreen({
     Key? key,
     required this.title,
   }) : super(key: key);
 
   @override
-  State<LoisDirectsScreen> createState() => _LoisDirectsScreenState();
+  State<ArretesCirculairesScreen> createState() =>
+      _ArretesCirculairesScreenState();
 }
 
-class _LoisDirectsScreenState extends State<LoisDirectsScreen> {
+class _ArretesCirculairesScreenState extends State<ArretesCirculairesScreen> {
   int _selectedPageIndex = 0;
-  List<Category> lois = [];
-  List<Category> directs = [];
+  List<Category> arretes = [];
+  List<Category> circulaires = [];
   bool categoryFound = true;
 
   void _selectPage(int index) {
@@ -30,8 +31,8 @@ class _LoisDirectsScreenState extends State<LoisDirectsScreen> {
   }
 
   Future<void> fetchSubcategories() async {
-    lois = [];
-    directs = [];
+    arretes = [];
+    circulaires = [];
     final url =
         Uri.https('muat-2ab99-default-rtdb.firebaseio.com', 'documents.json');
     final response = await http.get(url);
@@ -39,27 +40,31 @@ class _LoisDirectsScreenState extends State<LoisDirectsScreen> {
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);
 
-      if (data.containsKey("Lois")) {
-        final Map<String, dynamic> loisCategories = data["Lois"];
+      if (data.containsKey("Arrêtés")) {
+        final Map<String, dynamic> loisCategories = data["Arrêtés"];
         loisCategories.forEach((category, items) {
           final int itemCount = (items as Map<String, dynamic>).length;
-          lois.add(Category(name: category, count: itemCount));
+          arretes.add(Category(name: category, count: itemCount));
         });
       } else {
         categoryFound = false;
       }
-      if (data.containsKey("Directs")) {
-        final Map<String, dynamic> directsCategories = data["Directs"];
+      if (data.containsKey("Circulaires")) {
+        final Map<String, dynamic> directsCategories = data["Circulaires"];
         directsCategories.forEach((category, items) {
           final int itemCount = (items as Map<String, dynamic>).length;
-          directs.add(Category(name: category, count: itemCount));
+          circulaires.add(Category(name: category, count: itemCount));
         });
       } else {
         categoryFound = false;
       }
     } else {
-      throw Exception('Failed to load data');
+      throw Exception('Échec du chargement des données');
     }
+
+    print("########################################33s");
+    print(arretes.length);
+    print(circulaires.length);
   }
 
   @override
@@ -67,22 +72,6 @@ class _LoisDirectsScreenState extends State<LoisDirectsScreen> {
     super.initState();
     //fetchSubcategories(); // Fetch data when screen is initialized
   }
-
-/*
-  @override
-  void setState(VoidCallback fn) {
-    super.setState(fn);
-    fetchSubcategories();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    lois = []; // Reset Lois list
-    directs = [];
-    fetchSubcategories(); // Fetch data when screen is reloaded
-  }
-  */
 
   @override
   Widget build(BuildContext context) {
@@ -164,10 +153,10 @@ class _LoisDirectsScreenState extends State<LoisDirectsScreen> {
                               ),
                               tabs: [
                                 Tab(
-                                  text: 'Lois',
+                                  text: 'Arrêtés',
                                 ),
                                 Tab(
-                                  text: 'Decrets',
+                                  text: 'Circulaires',
                                 ),
                               ],
                             ),
@@ -177,15 +166,15 @@ class _LoisDirectsScreenState extends State<LoisDirectsScreen> {
                 ),
                 body: TabBarView(
                   children: [
-                    activePageTitle == 'Lois et Decrets'
+                    activePageTitle == 'Arrêtés et Circulaires'
                         ? CategoryScreen(
-                            category: 'Lois',
-                            categories: lois.reversed.toList())
+                            category: 'Arrêtés',
+                            categories: arretes.reversed.toList())
                         : const ContactScreen(),
-                    activePageTitle == 'Lois et Decrets'
+                    activePageTitle == 'Arrêtés et Circulaires'
                         ? CategoryScreen(
-                            category: 'Decret',
-                            categories: directs.reversed.toList())
+                            category: 'Circulaires',
+                            categories: circulaires.reversed.toList())
                         : const ContactScreen(),
                   ],
                 ),

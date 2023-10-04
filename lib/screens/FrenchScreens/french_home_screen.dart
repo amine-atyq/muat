@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:muat/screens/FrenchScreens/Home/AcceuilScreen.dart';
 import 'package:muat/screens/FrenchScreens/Home/ContactScreen.dart';
-import 'package:muat/screens/FrenchScreens/arretes_circulaires.dart';
-import 'package:muat/screens/FrenchScreens/lois_decrets_screen.dart';
+import 'package:muat/screens/FrenchScreens/arr%C3%AAt%C3%A9s_circulaires.dart';
+import 'package:muat/screens/FrenchScreens/lois_d%C3%A9crets_screen.dart';
 import 'package:muat/screens/FrenchScreens/recherche_screen.dart';
 import 'package:muat/screens/home_screen.dart';
 
@@ -38,7 +38,9 @@ class _FrenchHomeScreenState extends State<FrenchHomeScreen> {
     if (identifier == 'Arrêtés et Circulaires') {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (_) => const ArretesCirculairesScreen(),
+          builder: (_) => const ArretesCirculairesScreen(
+            title: 'Arrêtés et Circulaires',
+          ),
         ),
       );
     }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:muat/screens/FrenchScreens/lois_decrets_screen.dart';
+import 'package:muat/screens/ArabicScreens/arabic_arretes_circulaires_screen.dart';
+import 'package:muat/screens/FrenchScreens/arr%C3%AAt%C3%A9s_circulaires.dart';
+import 'package:muat/screens/FrenchScreens/lois_d%C3%A9crets_screen.dart';
 import 'package:muat/screens/FrenchScreens/recherche_screen.dart';
 
 import 'package:muat/widgets/FrenchScreenWidgets/french_footer.dart';
@@ -14,11 +16,11 @@ class AccueilScreen extends StatefulWidget {
 
 class _AccueilScreenState extends State<AccueilScreen> {
   void _setCategoryScreen(String identifier) {
-    if (identifier == 'Lois et Directs') {
+    if (identifier == 'Lois et Décrets') {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (_) => const LoisDirectsScreen(
-            title: 'Lois et Directs',
+            title: 'Lois et Décrets',
           ),
         ),
       );
@@ -27,7 +29,7 @@ class _AccueilScreenState extends State<AccueilScreen> {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (_) =>
-              const LoisDirectsScreen(title: 'Arrêtés et Circulaires'),
+              const ArretesCirculairesScreen(title: 'Arrêtés et Circulaires'),
         ),
       );
     }
@@ -61,7 +63,7 @@ class _AccueilScreenState extends State<AccueilScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: ButtonwithIcon(
-                  text: 'Lois et Directs',
+                  text: 'Lois et Décrets',
                   icon: const Icon(
                     Icons.library_books,
                     color: Colors.white,
