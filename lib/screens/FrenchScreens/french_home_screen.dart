@@ -26,7 +26,7 @@ class _FrenchHomeScreenState extends State<FrenchHomeScreen> {
 
   void _setScreen(String identifier) {
     Navigator.of(context).pop();
-    if (identifier == 'Lois et Directs') {
+    if (identifier == 'Lois et Décrets') {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (_) => const LoisDirectsScreen(
