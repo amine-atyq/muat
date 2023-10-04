@@ -14,7 +14,7 @@ class ContactScreen extends StatelessWidget {
 
     final Uri emailLaunchUri = Uri(
       scheme: 'mailto',
-      path: 'info@muat.gov.ma',
+      path: 'contact@muat.gov.ma',
       query: encodeQueryParameters(<String, String>{
         'subject': 'Contact form MUAT App',
       }),
