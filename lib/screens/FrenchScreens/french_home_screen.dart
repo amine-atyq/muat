@@ -30,7 +30,7 @@ class _FrenchHomeScreenState extends State<FrenchHomeScreen> {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (_) => const LoisDirectsScreen(
-            title: 'Lois et Directs',
+            title: 'Lois et Décrets',
           ),
         ),
       );
