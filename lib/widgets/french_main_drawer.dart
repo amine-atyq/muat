@@ -70,14 +70,14 @@ class FrenchMainDrawer extends StatelessWidget {
               color: Color(0xFF004595),
             ),
             title: Text(
-              'Lois et Directs',
+              'Lois et Décrets',
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
                     color: Color(0xFF004595),
                     fontSize: 24,
                   ),
             ),
             onTap: () {
-              onSelectScreen('Lois et Directs');
+              onSelectScreen('Lois et Décrets');
             },
           ),
           ListTile(

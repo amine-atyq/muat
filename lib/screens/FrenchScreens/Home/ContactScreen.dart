@@ -29,46 +29,59 @@ class ContactScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Opacity(
-          opacity: 0.1,
-          child: Image.asset(
-            'assets/images/pattern.png',
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFFD3C084),
+        title: const Text(
+          'Contactez-nous',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
           ),
         ),
-        Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'Contactez-nous',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _sendEmail,
-                style: ElevatedButton.styleFrom(
-                  primary: const Color(0xFF004595), // Background color
-                  onPrimary: Colors.white, // Text color
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 15, horizontal: 30), // Add padding
+      ),
+      body: Stack(
+        children: [
+          Opacity(
+            opacity: 0.1,
+            child: Image.asset(
+              'assets/images/pattern.png',
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: double.infinity,
+            ),
+          ),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'Contactez-nous',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
-                child: const Text(
-                  'Ouvrir l\'application du mail',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: _sendEmail,
+                  style: ElevatedButton.styleFrom(
+                    primary: const Color(0xFF004595), // Background color
+                    onPrimary: Colors.white, // Text color
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15, horizontal: 30), // Add padding
+                  ),
+                  child: const Text(
+                    'Ouvrir l\'application du mail',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

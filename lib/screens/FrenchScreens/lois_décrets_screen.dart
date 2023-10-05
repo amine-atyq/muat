@@ -63,12 +63,6 @@ class _LoisDirectsScreenState extends State<LoisDirectsScreen> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    //fetchSubcategories(); // Fetch data when screen is initialized
-  }
-
-  @override
   Widget build(BuildContext context) {
     var activePageTitle = widget.title;
     BottomNavigationBarItem buildBottomNavigationBarItem({

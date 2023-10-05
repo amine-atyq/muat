@@ -2,8 +2,8 @@ import 'package:muat/models/category.dart';
 import 'package:flutter/material.dart';
 import 'package:muat/screens/FrenchScreens/documents.dart';
 
-class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({
+class ArabicCategoryScreen extends StatelessWidget {
+  const ArabicCategoryScreen({
     super.key,
     required this.categories,
     required this.category,
@@ -22,8 +22,10 @@ class CategoryScreen extends StatelessWidget {
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (_) =>
-                    DocumnetsScreen(category: category, subCategory: item.name),
+                builder: (_) => DocumnetsScreen(
+                  category: category,
+                  subCategory: item.name,
+                ),
               ),
             );
           },
@@ -31,32 +33,42 @@ class CategoryScreen extends StatelessWidget {
             elevation: 1,
             color: const Color.fromARGB(255, 215, 229, 246),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
               child: ListTile(
-                contentPadding: EdgeInsets.all(0), // Remove default padding
                 title: Row(
-                  mainAxisAlignment: MainAxisAlignment
-                      .spaceBetween, // Aligns content to both ends
-                  crossAxisAlignment: CrossAxisAlignment
-                      .end, // Aligns content to the end (bottom)
                   children: [
-                    Text(
-                      item.count.toString(),
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: SizedBox(
+                        width: 35, // Fixed width for the count
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF004595),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Center(
+                            child: Text(
+                              item.count.toString(),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                     Expanded(
                       child: Text(
                         formatCategoryName(item.name),
-                        textAlign: TextAlign.right, // Align text to the right
                         style: const TextStyle(
                           fontSize: 16,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
+                        textDirection:
+                            TextDirection.rtl, // Align text to the right
                       ),
                     ),
                   ],

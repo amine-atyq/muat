@@ -109,8 +109,8 @@ class _RechercheScreenState extends State<RechercheScreen> {
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide(
-                    color: const Color(0xFF004595), // Added border color
+                  borderSide: const BorderSide(
+                    color: Color(0xFF004595), // Added border color
                   ),
                 ),
               ),

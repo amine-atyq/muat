@@ -18,7 +18,8 @@ class _ArabicHomeScreenWidgetState extends State<ArabicHomeScreenWidget> {
     if (identifier == 'قوانين ومراسيم') {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (_) => const ArabicLoisDirectsScreen(),
+          builder: (_) =>
+              const ArabicLoisDirectsScreen(title: 'قوانين ومراسيم'),
         ),
       );
     }
