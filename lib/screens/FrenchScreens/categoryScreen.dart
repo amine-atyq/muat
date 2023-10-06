@@ -18,52 +18,50 @@ class CategoryScreen extends StatelessWidget {
       itemCount: categories.length,
       itemBuilder: (context, index) {
         final item = categories[index];
-        return GestureDetector(
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) =>
-                    DocumnetsScreen(category: category, subCategory: item.name),
-              ),
-            );
-          },
-          child: Card(
-            elevation: 1,
-            color: const Color.fromARGB(255, 215, 229, 246),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: ListTile(
-                contentPadding: EdgeInsets.all(0), // Remove default padding
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment
-                      .spaceBetween, // Aligns content to both ends
-                  crossAxisAlignment: CrossAxisAlignment
-                      .end, // Aligns content to the end (bottom)
-                  children: [
-                    Text(
-                      item.count.toString(),
+        return Column(
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => DocumnetsScreen(
+                        category: category, subCategory: item.name),
+                  ),
+                );
+              },
+              child: Card(
+                elevation: 1,
+                color: const Color.fromARGB(255, 215, 229, 246),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: ListTile(
+                    title: Text(
+                      formatCategoryName(item.name),
                       style: const TextStyle(
                         fontSize: 16,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Expanded(
+                    trailing: Container(
+                      padding: const EdgeInsets.all(8.0),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF004595),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
                       child: Text(
-                        formatCategoryName(item.name),
-                        textAlign: TextAlign.right, // Align text to the right
+                        item.count.toString(),
                         style: const TextStyle(
-                          fontSize: 16,
-                          color: Colors.black,
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),
-          ),
+          ],
         );
       },
     );

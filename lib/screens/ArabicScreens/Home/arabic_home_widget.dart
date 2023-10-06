@@ -26,7 +26,9 @@ class _ArabicHomeScreenWidgetState extends State<ArabicHomeScreenWidget> {
     if (identifier == 'قرارات ودوريات') {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (_) => const ArabicArretesCirculairesScreen(),
+          builder: (_) => const ArabicArretesCirculairesScreen(
+            title: 'قرارات ودوريات',
+          ),
         ),
       );
     }

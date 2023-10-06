@@ -40,6 +40,7 @@ dependencies:
   http: ^1.1.0
   url_launcher: ^6.1.14
   mailer: ^6.0.1
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +52,15 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/launch_icon.png"
+  min_sdk_android: 21
+  colors:
+    android: "#004595"
+    ios: "#004595"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -68,6 +78,7 @@ flutter:
     - assets/images/maroc.png
     - assets/images/pdf.png
     - assets/images/word.png
+    - assets/images/launch_icon.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

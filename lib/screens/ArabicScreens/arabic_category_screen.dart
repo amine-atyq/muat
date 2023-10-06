@@ -1,5 +1,6 @@
 import 'package:muat/models/category.dart';
 import 'package:flutter/material.dart';
+import 'package:muat/screens/ArabicScreens/arabic_documents.dart';
 import 'package:muat/screens/FrenchScreens/documents.dart';
 
 class ArabicCategoryScreen extends StatelessWidget {
@@ -22,7 +23,7 @@ class ArabicCategoryScreen extends StatelessWidget {
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (_) => DocumnetsScreen(
+                builder: (_) => ArabicDocumnetsScreen(
                   category: category,
                   subCategory: item.name,
                 ),
