@@ -140,7 +140,11 @@ class _TitleListState extends State<TitleList> {
 
   startDownload() async {
     var storePath = await getPathFile.getPath();
+    print("storePath: $storePath");
     filePath = '$storePath/$fileName';
+
+    print("widget.fileUrl: ${widget.fileUrl}");
+
     setState(() {
       dowloading = true;
       progress = 0;
@@ -155,12 +159,14 @@ class _TitleListState extends State<TitleList> {
           });
         },
       );
+      print("Downloaded");
 
       setState(() {
         dowloading = false;
         fileExists = true;
       });
     } catch (e) {
+      print("Dio Error: $e");
       setState(() {
         dowloading = false;
       });

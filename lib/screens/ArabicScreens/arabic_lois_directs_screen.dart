@@ -167,12 +167,12 @@ class _ArabicLoisDirectsScreenState extends State<ArabicLoisDirectsScreen> {
                         ? ArabicCategoryScreen(
                             category: 'قوانين',
                             categories: lois.reversed.toList())
-                        : const ContactScreen(),
+                        : const ArabicContactScreen(),
                     activePageTitle == 'قوانين ومراسيم'
                         ? ArabicCategoryScreen(
                             category: 'مراسيم',
                             categories: directs.reversed.toList())
-                        : const ContactScreen(),
+                        : const ArabicContactScreen(),
                   ],
                 ),
                 bottomNavigationBar: Theme(

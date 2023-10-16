@@ -2,10 +2,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:muat/models/category.dart';
-import 'package:muat/data/french_data.dart';
 import 'package:muat/screens/ArabicScreens/Home/arabic_contact.dart';
+
 import 'package:muat/screens/ArabicScreens/arabic_category_screen.dart';
 import 'package:http/http.dart' as http;
+import 'package:muat/screens/ArabicScreens/arabic_home_screen.dart';
 
 import 'package:muat/screens/FrenchScreens/Home/ContactScreen.dart';
 
@@ -168,12 +169,12 @@ class _ArabicArretesCirculairesScreenState
                         ? ArabicCategoryScreen(
                             category: 'قوانين',
                             categories: arretes.reversed.toList())
-                        : const ContactScreen(),
+                        : const ArabicContactScreen(),
                     activePageTitle == 'قرارات ودوريات'
                         ? ArabicCategoryScreen(
                             category: 'مراسيم',
                             categories: circulaires.reversed.toList())
-                        : const ContactScreen(),
+                        : const ArabicContactScreen(),
                   ],
                 ),
                 bottomNavigationBar: Theme(

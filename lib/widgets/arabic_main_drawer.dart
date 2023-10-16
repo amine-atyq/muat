@@ -14,11 +14,10 @@ class ArabichMainDrawer extends StatelessWidget {
       child: Column(
         children: [
           DrawerHeader(
-            //padding: const EdgeInsets.all(20),
             decoration: const BoxDecoration(
               color: Color(0xFF004595),
             ),
-            child: Container(
+            child: SizedBox(
               width: MediaQuery.of(context).size.width,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -53,14 +52,14 @@ class ArabichMainDrawer extends StatelessWidget {
               color: Color(0xFF004595),
             ),
             title: Text(
-              'Accueil',
+              'استقبال',
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
                     color: Color(0xFF004595),
                     fontSize: 24,
                   ),
             ),
             onTap: () {
-              onSelectScreen('Accueil');
+              onSelectScreen('استقبال');
             },
           ),
           ListTile(
@@ -70,14 +69,14 @@ class ArabichMainDrawer extends StatelessWidget {
               color: Color(0xFF004595),
             ),
             title: Text(
-              'Lois et Directs',
+              'قوانين ومراسيم',
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
                     color: Color(0xFF004595),
                     fontSize: 24,
                   ),
             ),
             onTap: () {
-              onSelectScreen('Lois et Directs');
+              onSelectScreen('قوانين ومراسيم');
             },
           ),
           ListTile(
@@ -87,14 +86,16 @@ class ArabichMainDrawer extends StatelessWidget {
               color: Color(0xFF004595),
             ),
             title: Text(
-              'Arrêtés et Circulaires',
+              'قرارات ودوريات',
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
                     color: const Color(0xFF004595),
                     fontSize: 24,
                   ),
             ),
             onTap: () {
-              onSelectScreen('Arrêtés et Circulaires');
+              onSelectScreen(
+                'قرارات ودوريات',
+              );
             },
           ),
           ListTile(
@@ -104,14 +105,14 @@ class ArabichMainDrawer extends StatelessWidget {
               color: Color(0xFF004595),
             ),
             title: Text(
-              'Recherche',
+              'بحث',
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
                     color: const Color(0xFF004595),
                     fontSize: 24,
                   ),
             ),
             onTap: () {
-              onSelectScreen('Recherche');
+              onSelectScreen('بحث');
             },
           ),
           ListTile(
@@ -121,14 +122,14 @@ class ArabichMainDrawer extends StatelessWidget {
               color: Color(0xFF004595),
             ),
             title: Text(
-              'Contact',
+              'اتصل بنا',
               style: Theme.of(context).textTheme.titleSmall!.copyWith(
                     color: const Color(0xFF004595),
                     fontSize: 24,
                   ),
             ),
             onTap: () {
-              onSelectScreen('Contact');
+              onSelectScreen('اتصل بنا');
             },
           ),
         ],

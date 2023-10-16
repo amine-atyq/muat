@@ -122,7 +122,7 @@ class _RechercheScreenState extends State<RechercheScreen> {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (_) =>
-                      rechercheDocumnetsScreen(newDocuments: filteredDocuments),
+                      RechercheDocumnetsScreen(newDocuments: filteredDocuments),
                 ),
               );
             },

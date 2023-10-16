@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ArabicContactScreen extends StatelessWidget {
-  const ArabicContactScreen({super.key});
+class ShortContactScreen extends StatelessWidget {
+  const ShortContactScreen({super.key});
 
   void _sendEmail() async {
     String? encodeQueryParameters(Map<String, String> params) {
@@ -16,7 +16,8 @@ class ArabicContactScreen extends StatelessWidget {
       scheme: 'mailto',
       path: 'contact@muat.gov.ma',
       query: encodeQueryParameters(<String, String>{
-        'subject': 'MUAT نموذج الاتصال في تطبيق',
+        'subject':
+            'Formulaire de contact de l\'application Réglementation Urbanisme Habitat',
       }),
     );
 
@@ -46,7 +47,7 @@ class ArabicContactScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 const Text(
-                  "اتصل بنا",
+                  'Contactez-nous',
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 20),
@@ -59,7 +60,7 @@ class ArabicContactScreen extends StatelessWidget {
                         vertical: 15, horizontal: 30), // Add padding
                   ),
                   child: const Text(
-                    "فتح تطبيق البريد الإلكتروني",
+                    'Ouvrir l\'application du mail',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 24,

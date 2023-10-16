@@ -16,7 +16,8 @@ class ContactScreen extends StatelessWidget {
       scheme: 'mailto',
       path: 'contact@muat.gov.ma',
       query: encodeQueryParameters(<String, String>{
-        'subject': 'Contact form MUAT App',
+        'subject':
+            'Formulaire de contact de l\'application Réglementation Urbanisme Habitat',
       }),
     );
 

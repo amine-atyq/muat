@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:muat/models/category.dart';
-import 'package:muat/screens/FrenchScreens/Home/ContactScreen.dart';
+import 'package:muat/screens/FrenchScreens/Home/short_contact_screen.dart';
 import 'package:muat/screens/FrenchScreens/categoryScreen.dart';
 import 'package:http/http.dart' as http;
 
@@ -159,12 +159,12 @@ class _LoisDirectsScreenState extends State<LoisDirectsScreen> {
                         ? CategoryScreen(
                             category: 'Lois',
                             categories: lois.reversed.toList())
-                        : const ContactScreen(),
+                        : const ShortContactScreen(),
                     activePageTitle == 'Lois et Décrets'
                         ? CategoryScreen(
                             category: 'Décrets',
                             categories: directs.reversed.toList())
-                        : const ContactScreen(),
+                        : const ShortContactScreen(),
                   ],
                 ),
                 bottomNavigationBar: Theme(

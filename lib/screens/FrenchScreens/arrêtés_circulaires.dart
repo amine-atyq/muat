@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-
 import 'package:muat/models/category.dart';
-import 'package:muat/screens/FrenchScreens/Home/ContactScreen.dart';
+import 'package:muat/screens/FrenchScreens/Home/short_contact_screen.dart';
 import 'package:muat/screens/FrenchScreens/categoryScreen.dart';
 import 'package:http/http.dart' as http;
+import 'package:muat/screens/FrenchScreens/circulaires.dart';
 
 class ArretesCirculairesScreen extends StatefulWidget {
   final String title;
@@ -32,7 +32,6 @@ class _ArretesCirculairesScreenState extends State<ArretesCirculairesScreen> {
 
   Future<void> fetchSubcategories() async {
     arretes = [];
-    circulaires = [];
     final url =
         Uri.https('muat-2ab99-default-rtdb.firebaseio.com', 'documents.json');
     final response = await http.get(url);
@@ -49,28 +48,14 @@ class _ArretesCirculairesScreenState extends State<ArretesCirculairesScreen> {
       } else {
         categoryFound = false;
       }
-      if (data.containsKey("Circulaires")) {
-        final Map<String, dynamic> directsCategories = data["Circulaires"];
-        directsCategories.forEach((category, items) {
-          final int itemCount = (items as Map<String, dynamic>).length;
-          circulaires.add(Category(name: category, count: itemCount));
-        });
-      } else {
-        categoryFound = false;
-      }
     } else {
       throw Exception('Échec du chargement des données');
     }
-
-    print("########################################33s");
-    print(arretes.length);
-    print(circulaires.length);
   }
 
   @override
   void initState() {
     super.initState();
-    //fetchSubcategories(); // Fetch data when screen is initialized
   }
 
   @override
@@ -170,12 +155,10 @@ class _ArretesCirculairesScreenState extends State<ArretesCirculairesScreen> {
                         ? CategoryScreen(
                             category: 'Arrêtés',
                             categories: arretes.reversed.toList())
-                        : const ContactScreen(),
+                        : const ShortContactScreen(),
                     activePageTitle == 'Arrêtés et Circulaires'
-                        ? CategoryScreen(
-                            category: 'Circulaires',
-                            categories: circulaires.reversed.toList())
-                        : const ContactScreen(),
+                        ? const CirculairesScreen()
+                        : const ShortContactScreen(),
                   ],
                 ),
                 bottomNavigationBar: Theme(

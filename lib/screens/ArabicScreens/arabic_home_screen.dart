@@ -68,8 +68,8 @@ class _ArabicHomeScreenState extends State<ArabicHomeScreen> {
     }) {
       final isSelected = index == _selectedPageIndex;
       final color = isSelected
-          ? Color.fromARGB(255, 241, 206, 93) // Selected color
-          : Color.fromARGB(255, 171, 143, 51); // Unselected color
+          ? const Color.fromARGB(255, 241, 206, 93) // Selected color
+          : const Color.fromARGB(255, 171, 143, 51); // Unselected color
 
       return BottomNavigationBarItem(
         icon: Icon(

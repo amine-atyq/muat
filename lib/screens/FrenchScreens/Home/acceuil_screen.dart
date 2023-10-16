@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:muat/screens/ArabicScreens/arabic_arretes_circulaires_screen.dart';
 import 'package:muat/screens/FrenchScreens/arr%C3%AAt%C3%A9s_circulaires.dart';
 import 'package:muat/screens/FrenchScreens/lois_d%C3%A9crets_screen.dart';
 import 'package:muat/screens/FrenchScreens/recherche_screen.dart';

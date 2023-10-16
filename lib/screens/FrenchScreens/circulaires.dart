@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 import 'package:dio/dio.dart';
 import 'package:open_file/open_file.dart';
@@ -7,21 +9,19 @@ import 'package:muat/logic/check_permission.dart';
 import 'package:muat/logic/directory_path.dart';
 import 'package:path/path.dart' as path;
 
-class RechercheDocumnetsScreen extends StatefulWidget {
-  const RechercheDocumnetsScreen({
+class CirculairesScreen extends StatefulWidget {
+  const CirculairesScreen({
     super.key,
-    required this.newDocuments,
   });
-  final List<Map<String, String>> newDocuments;
 
   @override
-  State<RechercheDocumnetsScreen> createState() =>
-      _RechercheDocumnetsScreenState();
+  State<CirculairesScreen> createState() => _CirculairesScreenState();
 }
 
-class _RechercheDocumnetsScreenState extends State<RechercheDocumnetsScreen> {
+class _CirculairesScreenState extends State<CirculairesScreen> {
   var isPermissionGranted = false;
   var checkAllPermissions = CheckPermission();
+  var newDocuments = <Map<String, String>>[];
 
   checkPermission() async {
     var permission = await checkAllPermissions.isStoragePermission();
@@ -36,14 +36,40 @@ class _RechercheDocumnetsScreenState extends State<RechercheDocumnetsScreen> {
   void initState() {
     super.initState();
     checkPermission();
+    fetchDocuments().then((data) {
+      setState(() {
+        newDocuments = data;
+      });
+    });
+  }
+
+  Future<List<Map<String, String>>> fetchDocuments() async {
+    final url =
+        Uri.https('muat-2ab99-default-rtdb.firebaseio.com', 'documents.json');
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> data = json.decode(response.body);
+
+      if (data.containsKey("Circulaires")) {
+        final Map<String, dynamic> circulaires = data["Circulaires"];
+        return circulaires.values
+            .map((doc) => {
+                  "title": doc["title"] as String,
+                  "url": doc["url"] as String,
+                })
+            .toList();
+      }
+    }
+    throw Exception('Échec de chargement des documents');
   }
 
   @override
   Widget build(BuildContext context) {
     Widget content = ListView.builder(
-      itemCount: widget.newDocuments.length,
+      itemCount: newDocuments.length,
       itemBuilder: (context, index) {
-        final document = widget.newDocuments[index];
+        final document = newDocuments[index];
         return TitleList(
           fileUrl: document['url']!,
           title: document['title']!,
@@ -53,22 +79,18 @@ class _RechercheDocumnetsScreenState extends State<RechercheDocumnetsScreen> {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        backgroundColor: const Color(0xFFD3C084),
-        title: const Text(
-          'Resultat de Recherche',
-          style: TextStyle(
-            fontSize: 20, // Adjust the font size as needed
-            fontWeight: FontWeight.bold, // Adjust the font weight as needed
-            color: Colors.black, // Adjust the text color as needed
-          ),
-        ),
-      ),
       body: isPermissionGranted
           ? content
           : Center(
-              child: TextButton(
-                child: const Text('Permission issue'),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: const Color(0xFF004595), // Background color
+                  onPrimary: Colors.white, // Text color
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 15, horizontal: 30), // Add padding
+                ),
+                child: const Text(
+                    'Veuillez attribuer la permission a l\'application'),
                 onPressed: () {
                   checkPermission();
                 },
@@ -93,7 +115,7 @@ class _TitleListState extends State<TitleList> {
   double progress = 0;
   String fileName = "";
   late String filePath;
-  // late CancelToken cancelToken;
+
   var getPathFile = DirectoryPath();
 
   startDownload() async {

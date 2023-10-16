@@ -4,7 +4,7 @@ package="com.example.muat">
     <uses-permission android:name="android.permission.INTERNET"/>
  
     <application
-        android:label="Réglementation Urbanisme Habita"
+        android:label="Réglementation Urbanisme Habitat"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

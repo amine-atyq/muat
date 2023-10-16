@@ -69,7 +69,7 @@ class _DocumnetsScreenState extends State<DocumnetsScreen> {
             .toList();
       }
     }
-    throw Exception('Failed to load documents');
+    throw Exception('Échec de chargement des documents');
   }
 
   @override
@@ -101,8 +101,15 @@ class _DocumnetsScreenState extends State<DocumnetsScreen> {
       body: isPermissionGranted
           ? content
           : Center(
-              child: TextButton(
-                child: const Text('Permission issue'),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: const Color(0xFF004595), // Background color
+                  onPrimary: Colors.white, // Text color
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 15, horizontal: 30), // Add padding
+                ),
+                child: const Text(
+                    'Veuillez attribuer la permission a l\'application'),
                 onPressed: () {
                   checkPermission();
                 },
